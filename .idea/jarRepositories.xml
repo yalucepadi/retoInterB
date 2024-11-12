@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="integracion-mvn-dev" />
+      <option name="name" value="integracion-mvn-dev" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/integracion-mvn-dev" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="disney-mvn-prod" />
+      <option name="name" value="disney-mvn-prod" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/disney-mvn-prod" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="disney-mvn-dev" />
+      <option name="name" value="disney-mvn-dev" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/disney-mvn-dev" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="redhat" />
+      <option name="name" value="redhat" />
+      <option name="url" value="https://maven.repository.redhat.com/ga" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="disney-mvn-cert" />
+      <option name="name" value="disney-mvn-cert" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/disney-mvn-cert" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="genesis-mvn-dev" />
+      <option name="name" value="genesis-mvn-dev" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/genesis-mvn-dev" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="genesis-mvn-prod" />
+      <option name="name" value="genesis-mvn-prod" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/genesis-mvn-prod" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="spring-milestones" />
+      <option name="name" value="Spring Milestones" />
+      <option name="url" value="https://repo.spring.io/milestone" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="integracion-mvn-cert" />
+      <option name="name" value="integracion-mvn-cert" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/integracion-mvn-cert" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="integracion-mvn-prod" />
+      <option name="name" value="integracion-mvn-prod" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/integracion-mvn-prod" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="spring-snapshots" />
+      <option name="name" value="Spring Snapshots" />
+      <option name="url" value="https://repo.spring.io/snapshot" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+  </component>
+</project>
