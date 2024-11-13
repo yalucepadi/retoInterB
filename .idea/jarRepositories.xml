@@ -57,6 +57,11 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="https://mvnrepository.com/artifact/mysql/mysql-connector-java" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="spring-milestones" />
       <option name="name" value="Spring Milestones" />
       <option name="url" value="https://repo.spring.io/milestone" />
@@ -67,14 +72,14 @@
       <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/integracion-mvn-cert" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="integracion-mvn-prod" />
-      <option name="name" value="integracion-mvn-prod" />
-      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/integracion-mvn-prod" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="spring-snapshots" />
       <option name="name" value="Spring Snapshots" />
       <option name="url" value="https://repo.spring.io/snapshot" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="integracion-mvn-prod" />
+      <option name="name" value="integracion-mvn-prod" />
+      <option name="url" value="https://devopstdp.eastus2.cloudapp.azure.com/artifactory/integracion-mvn-prod" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="jboss.community" />

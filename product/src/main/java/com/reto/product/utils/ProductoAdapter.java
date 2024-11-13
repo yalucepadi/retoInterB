@@ -2,7 +2,6 @@ package com.reto.product.utils;
 
 
 import com.reto.product.model.response.ResponseGeneralDto;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
