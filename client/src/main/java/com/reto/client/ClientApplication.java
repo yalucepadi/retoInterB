@@ -11,7 +11,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {
 		"com.reto.client.model.request",
 		"com.reto.client.model.proxy.model",
-		"com.reto.client.model"  // Agrega el paquete correcto donde están tus entidades
+		"com.reto.client.model" ,
+		"com.reto.client.config",
+		"com.reto.client.utils"
+		// Agrega el paquete correcto donde están tus entidades
 })
 @EnableJpaRepositories(basePackages = "com.reto.client.repository")
 

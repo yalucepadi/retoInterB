@@ -1,5 +1,8 @@
 package com.reto.client.utils;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class EncryptionService {
     private static final String SALT = "X9f#mK2$pL";
 

@@ -1,5 +1,8 @@
 package com.reto.client.utils;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class ValidationService {
     public String generateHash(String input) {
         return String.valueOf(input.hashCode());

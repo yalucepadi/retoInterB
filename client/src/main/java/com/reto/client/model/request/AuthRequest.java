@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "auth")
-public class Auth {
+public class AuthRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -23,7 +23,7 @@ public class Auth {
 
     @OneToOne
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")  // Referencia a la columna `id` de Cliente
-    private Cliente cliente;
+    private ClientRequest cliente;
 
     @PostLoad
     @PostPersist
