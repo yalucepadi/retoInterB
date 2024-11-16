@@ -8,6 +8,7 @@ import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Mapper(componentModel = "spring")
 public interface AuhtMapper {
@@ -20,6 +21,9 @@ public interface AuhtMapper {
     @Mapping(target = "user", source = "cliente.nombres")
     AuthDto toDto(AuthRequest authRequest);
 
+    default void setPassword(AuthRequest authRequest, PasswordEncoder passwordEncoder) {
+        authRequest.setPassword(passwordEncoder.encode(authRequest.getPassword()));
+    }
 
 
 }
