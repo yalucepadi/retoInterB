@@ -1,11 +1,10 @@
 package com.reto.client.proxy.rest.client.impl;
 
-import com.reto.client.model.proxy.model.request.Product;
-import com.reto.client.model.proxy.model.request.ProductDto;
 import com.reto.client.model.request.ClientDto;
 
 import com.reto.client.proxy.product.impl.ProductServiceImpl;
 import com.reto.client.proxy.product.repository.ProductoRepository;
+import com.reto.client.proxy.rest.client.ClientService;
 import com.reto.client.repository.ClienteRepository;
 import com.reto.client.utils.ClientMapper;
 import com.reto.client.utils.ClientValidador;
@@ -14,14 +13,11 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-public class ClientServiceImpl implements ClientService{
+public class ClientServiceImpl implements ClientService {
     private final ClienteRepository clienteRepository;
     private final ProductoRepository productRepository;
 

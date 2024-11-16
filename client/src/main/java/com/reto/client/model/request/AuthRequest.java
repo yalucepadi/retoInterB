@@ -19,12 +19,10 @@ public class AuthRequest {
 
     private String user;
     private String password;
-
-
     @OneToOne
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")  // Referencia a la columna `id` de Cliente
-    private ClientRequest cliente;
 
+    private ClientRequest cliente;
     @PostLoad
     @PostPersist
     private void initUser() {
@@ -32,4 +30,39 @@ public class AuthRequest {
             this.user = cliente.getNombres();
         }
     }
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public ClientRequest getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClientRequest cliente) {
+        this.cliente = cliente;
+    }
+
+
+
+
 }

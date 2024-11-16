@@ -1,4 +1,4 @@
-package com.reto.client.proxy.rest.client.impl;
+package com.reto.client.proxy.rest.client;
 
 import com.reto.client.model.request.ClientDto;
 import reactor.core.publisher.Flux;
