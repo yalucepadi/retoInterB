@@ -1,11 +1,10 @@
 package com.reto.client.model.request;
 
-import com.reto.client.model.proxy.model.ProductDto;
+import com.reto.client.model.proxy.model.request.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,11 +53,11 @@ public class ClientDto {
         this.numeroDocumento = numeroDocumento;
     }
 
-    public List<ProductDto> getProductosFinancieros() {
+    public List<Product> getProductosFinancieros() {
         return productosFinancieros;
     }
 
-    public void setProductosFinancieros(List<ProductDto> productosFinancieros) {
+    public void setProductosFinancieros(List<Product> productosFinancieros) {
         this.productosFinancieros = productosFinancieros;
     }
 
@@ -78,5 +77,5 @@ public class ClientDto {
     private String codigoUnico;
     private String tipoDocumento;
     private String numeroDocumento;
-    private List<ProductDto> productosFinancieros = new ArrayList<>();
+    private List<Product> productosFinancieros = new ArrayList<>();
 }

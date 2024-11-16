@@ -1,10 +1,12 @@
 package com.reto.product.expose;
 
 import com.reto.product.model.request.ProductoDto;
+import com.reto.product.model.request.ProductoRequest;
 import com.reto.product.model.response.ProductoResponse;
 import com.reto.product.model.response.ResponseGeneralDto;
 import com.reto.product.proxy.rest.ProductoService;
 import com.reto.product.proxy.rest.impl.ProductoImpl;
+import com.reto.product.repository.ProductoRepository;
 import com.reto.product.utils.Constants;
 import lombok.RequiredArgsConstructor;
 
@@ -15,13 +17,15 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/product")
 @RequiredArgsConstructor
 public class ProductoController {
     private final ProductoImpl productoService;
-
+    private final ProductoRepository productRepository;
     @PostMapping("/create")
     public Mono<ResponseEntity<ResponseGeneralDto>> crearProducto(@RequestBody ProductoDto productoDto) {
         return productoService.crearProducto(productoDto)
@@ -87,6 +91,9 @@ public class ProductoController {
                                 .body(new ResponseGeneralDto("BAD_REQUEST", HttpStatus.BAD_REQUEST.value(), e.getMessage(), null))
                 ));
     }
+
+
+
 
 
 

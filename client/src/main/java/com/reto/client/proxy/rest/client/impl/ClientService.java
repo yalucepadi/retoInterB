@@ -6,7 +6,7 @@ import reactor.core.publisher.Mono;
 
 public interface ClientService {
 
-    Mono<ClientDto> crearCliente(ClientDto clientDto);
+    Mono<ClientDto> crearCliente(ClientDto clientDto,Integer id);
     Mono<ClientDto> obtenerClientePorId(Integer id);
 
 

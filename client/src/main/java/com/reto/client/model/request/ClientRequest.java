@@ -1,27 +1,22 @@
 package com.reto.client.model.request;
 
-import com.reto.client.model.proxy.model.ProductDto;
-import com.reto.client.utils.EncryptionService;
+import com.reto.client.model.proxy.model.request.Product;
 import com.reto.client.utils.SecureIdGenerator;
-import com.reto.client.utils.TimestampService;
-import com.reto.client.utils.ValidationService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 
 @Builder
 
 @AllArgsConstructor
-
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "client", uniqueConstraints = {
@@ -51,9 +46,9 @@ public class ClientRequest {
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id")
-    private List<ProductDto> productosFinancieros = new ArrayList<>();
+    private List<Product> productosFinancieros = new ArrayList<>();
 
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
     private AuthRequest auth;
@@ -128,11 +123,11 @@ public class ClientRequest {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public List<ProductDto> getProductosFinancieros() {
+    public List<Product> getProductosFinancieros() {
         return productosFinancieros;
     }
 
-    public void setProductosFinancieros(List<ProductDto> productosFinancieros) {
+    public void setProductosFinancieros(List<Product> productosFinancieros) {
         this.productosFinancieros = productosFinancieros;
     }
 
@@ -145,7 +140,7 @@ public class ClientRequest {
     }
 
 
-    public void addProductoFinanciero(ProductDto producto) {
+    public void addProductoFinanciero(Product producto) {
         if (this.productosFinancieros == null) {
             this.productosFinancieros = new ArrayList<>();
         }

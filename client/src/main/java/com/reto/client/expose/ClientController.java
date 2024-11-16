@@ -7,12 +7,10 @@ import com.reto.client.proxy.rest.client.impl.ClientService;
 import com.reto.client.proxy.rest.client.impl.ClientServiceImpl;
 import com.reto.client.utils.Constants;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -23,8 +21,8 @@ public class ClientController {
     private final ClientServiceImpl clientService;
 
     @PostMapping("/create")
-    public Mono<ResponseEntity<ResponseGeneralDto>> crearCliente(@RequestBody ClientDto clientDto) {
-        return clientService.crearCliente(clientDto)
+    public Mono<ResponseEntity<ResponseGeneralDto>> crearCliente(@RequestBody ClientDto clientDto, @RequestParam Integer id) {
+        return clientService.crearCliente(clientDto,id)
                 .map(client -> {
 
 
@@ -36,7 +34,7 @@ public class ClientController {
                                     .status(Constants.HTTP_201_code)
                                     .comment("Cliente creado exitosamente")
                                     .data(ClienteResponse.builder()
-                                            .message("Cliente:"+"Nombre:"+clientDto.getNombres()+"\n"+
+                                            .message("Cliente:"+"Nombre:"+clientDto.getNombres()+" "+
                                                     "Apellido:"+clientDto.getApellidos())
                                             .build())
                                     .build()
@@ -51,6 +49,19 @@ public class ClientController {
                                 .build()
                 ));
     }
+
+    @GetMapping("/{id}")
+    public Mono<ResponseEntity<ResponseGeneralDto>> obtenerProductoPorId(@PathVariable Integer id) {
+        return clientService.obtenerClientePorId(id)
+                .map(producto -> ResponseEntity.ok(
+                        new ResponseGeneralDto("OK", HttpStatus.OK.value(), "Cliente encontrado", producto))
+                )
+                .onErrorResume(e -> Mono.just(
+                        ResponseEntity.status(HttpStatus.NOT_FOUND)
+                                .body(new ResponseGeneralDto("NOT_FOUND", HttpStatus.NOT_FOUND.value(), e.getMessage(), null))
+                ));
+    }
+
 
 
 }
