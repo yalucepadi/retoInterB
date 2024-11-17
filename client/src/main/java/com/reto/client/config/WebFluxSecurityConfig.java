@@ -19,18 +19,17 @@ public class WebFluxSecurityConfig {
         this.userDetailsService = userDetailsService;
     }
 
-
-
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http.csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers("/api/client/create").permitAll() // Permitir ruta específica
-                                .pathMatchers("/api/client/{id}").permitAll()
+                        .pathMatchers("/api/client/{id}").permitAll()
                         .pathMatchers("/api/auth/*").permitAll()
-                                .anyExchange().authenticated()
+                        .anyExchange().authenticated()
                 )
-                .httpBasic(httpBasicSpec -> {})
+                .httpBasic(httpBasicSpec -> {
+                })
                 .build();
     }
 
@@ -38,5 +37,5 @@ public class WebFluxSecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
 }

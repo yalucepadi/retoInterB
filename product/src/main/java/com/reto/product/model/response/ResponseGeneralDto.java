@@ -1,21 +1,20 @@
- package com.reto.product.model.response;
+package com.reto.product.model.response;
 
 
- import lombok.AllArgsConstructor;
- import lombok.Builder;
- import lombok.Data;
- import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
- @Data
- @Builder
- @NoArgsConstructor
- @AllArgsConstructor
- public class ResponseGeneralDto {
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ResponseGeneralDto {
     private String code;
     private Integer status;
     private String comment;
     private Object data;
-
 
 
 }

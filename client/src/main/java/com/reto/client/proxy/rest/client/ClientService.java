@@ -6,10 +6,12 @@ import reactor.core.publisher.Mono;
 
 public interface ClientService {
 
-    Mono<ClientDto> crearCliente(ClientDto clientDto,Integer id);
+    Mono<ClientDto> crearCliente(ClientDto clientDto, Integer id);
+
     Mono<ClientDto> obtenerClientePorId(Integer id);
 
 
     Flux<ClientDto> obtenerTodosLosClientes();
+
     Mono<ClientDto> actualizarCliente(Integer id, ClientDto clientDto);
 }

@@ -6,6 +6,6 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 public interface ProductService {
- Mono<List<Product>> obtenerProductoPorId(Integer id);
+    Mono<List<Product>> obtenerProductoPorId(Integer id);
 
 }

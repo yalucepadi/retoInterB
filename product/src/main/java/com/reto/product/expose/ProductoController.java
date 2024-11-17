@@ -1,23 +1,16 @@
 package com.reto.product.expose;
 
 import com.reto.product.model.request.ProductoDto;
-import com.reto.product.model.request.ProductoRequest;
 import com.reto.product.model.response.ProductoResponse;
 import com.reto.product.model.response.ResponseGeneralDto;
-import com.reto.product.proxy.rest.ProductoService;
 import com.reto.product.proxy.rest.impl.ProductoImpl;
 import com.reto.product.repository.ProductoRepository;
 import com.reto.product.utils.Constants;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.Optional;
 
 
 @RestController
@@ -26,12 +19,11 @@ import java.util.Optional;
 public class ProductoController {
     private final ProductoImpl productoService;
     private final ProductoRepository productRepository;
+
     @PostMapping("/create")
     public Mono<ResponseEntity<ResponseGeneralDto>> crearProducto(@RequestBody ProductoDto productoDto) {
         return productoService.crearProducto(productoDto)
                 .map(producto -> {
-
-
 
 
                     return ResponseEntity.ok(
@@ -40,7 +32,7 @@ public class ProductoController {
                                     .status(Constants.HTTP_201_code)
                                     .comment("Producto creado exitosamente")
                                     .data(ProductoResponse.builder()
-                                            .message("Producto:"+productoDto.getNombre())
+                                            .message("Producto:" + productoDto.getNombre())
                                             .build())
                                     .build()
                     );
@@ -91,13 +83,6 @@ public class ProductoController {
                                 .body(new ResponseGeneralDto("BAD_REQUEST", HttpStatus.BAD_REQUEST.value(), e.getMessage(), null))
                 ));
     }
-
-
-
-
-
-
-
 
 
 }

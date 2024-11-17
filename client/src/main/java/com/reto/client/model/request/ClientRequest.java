@@ -1,27 +1,13 @@
 package com.reto.client.model.request;
 
 import com.reto.client.model.proxy.model.request.Product;
-
-
 import com.reto.client.utils.SecureIdGenerator;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +21,7 @@ import java.util.List;
 @Table(name = "client", uniqueConstraints = {
         @UniqueConstraint(columnNames = "codigo_unico")
 })
-    public class ClientRequest {
+public class ClientRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,12 +58,10 @@ import java.util.List;
             fechaCreacion = LocalDateTime.now();
         }
         if (codigoUnico == null) {
-            SecureIdGenerator generator= new SecureIdGenerator();
+            SecureIdGenerator generator = new SecureIdGenerator();
             codigoUnico = generator.generateSecureId();
         }
     }
-
-
 
 
     public Integer getId() {

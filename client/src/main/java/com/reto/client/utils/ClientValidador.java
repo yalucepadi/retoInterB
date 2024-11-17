@@ -1,7 +1,6 @@
 package com.reto.client.utils;
 
 
-
 import com.reto.client.model.request.ClientRequest;
 import org.springframework.stereotype.Component;
 
@@ -10,8 +9,8 @@ import java.util.function.Predicate;
 @Component
 public class ClientValidador {
     private final Predicate<ClientRequest> tieneApellidoValido = client ->
-            client.getApellidos()!=null &&  client.getApellidos().length()>=3;
-            ;
+            client.getApellidos() != null && client.getApellidos().length() >= 3;
+    ;
 
     private final Predicate<ClientRequest> tieneNombreValido = client ->
             client.getNombres() != null && client.getNombres().length() >= 3;

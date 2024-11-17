@@ -1,7 +1,6 @@
 package com.reto.client.proxy.rest.client.impl;
 
 import com.reto.client.model.request.ClientDto;
-
 import com.reto.client.proxy.product.impl.ProductServiceImpl;
 import com.reto.client.proxy.product.repository.ProductoRepository;
 import com.reto.client.proxy.rest.client.ClientService;
@@ -27,6 +26,7 @@ public class ClientServiceImpl implements ClientService {
     private final ClientValidador clientValidador;
 
     private final ProductServiceImpl productService;
+
     public ClientServiceImpl(ClienteRepository clienteRepository, ProductoRepository productoRepository,
                              ClientMapper clientMapper, ProductoMapper productoMapper, ClientValidador clientValidador,
                              ProductServiceImpl productService) {
@@ -44,34 +44,33 @@ public class ClientServiceImpl implements ClientService {
         return Mono.just(clientDto)
                 .map(clientMapper::toClient)  // Paso 1: Convertir DTO a entidad Cliente
                 .flatMap(cliente -> {
-                    // Paso 2: Obtener los productos asociados al cliente por idProducto
+
                     return productService.obtenerProductoPorId(idProducto)
                             .flatMap(productos -> {
                                 if (productos != null && !productos.isEmpty()) {
-                                    // Paso 3: Asignar los productos al cliente y actualizar el clientId si el producto existe
-                                    productos.forEach(producto -> producto.setCliente(cliente)); // Establecer cliente en cada producto
 
-                                    // Usamos un Flux para iterar sobre la lista de productos y actualizar cada uno
-                                    return Flux.fromIterable(productos)  // Convertimos la lista de productos en un Flux
+                                    productos.forEach(producto -> producto.setCliente(cliente));
+
+
+                                    return Flux.fromIterable(productos)
                                             .flatMap(producto -> {
-                                                // Aquí pasamos el id del producto y el id del cliente para actualizar el producto
+
                                                 return productService.actualizarClienteIdProducto(idProducto, cliente.getId());
                                             })
-                                            .then(Mono.just(cliente));  // Una vez que todos los productos se actualicen, retornamos el cliente
+                                            .then(Mono.just(cliente));
                                 } else {
-                                    // Si no hay productos asociados, asignamos una lista vacía
+
                                     cliente.setProductosFinancieros(new ArrayList<>());
-                                    return Mono.just(cliente);  // Si no hay productos, regresamos el cliente tal cual
+                                    return Mono.just(cliente);
                                 }
                             });
                 })
                 .flatMap(cliente -> {
-                    // Paso 4: Guardar al cliente en el repositorio (JPA)
-                    return Mono.fromCallable(() -> clienteRepository.save(cliente))  // Guardamos el cliente
-                            .map(savedCliente -> clientMapper.toDto(savedCliente));  // Convertimos el cliente guardado a DTO y lo retornamos
+
+                    return Mono.fromCallable(() -> clienteRepository.save(cliente))
+                            .map(savedCliente -> clientMapper.toDto(savedCliente));
                 });
     }
-
 
 
     @Transactional
@@ -82,7 +81,6 @@ public class ClientServiceImpl implements ClientService {
                         .map(client -> Mono.just(clientMapper.toDto(client)))
                         .orElseGet(() -> Mono.error(new RuntimeException("Cliente no encontrado")))
                 );
-
 
 
     }
@@ -106,7 +104,6 @@ public class ClientServiceImpl implements ClientService {
                 })
                 .map(clientMapper::toDto)
                 .switchIfEmpty(Mono.error(new RuntimeException("Cliente no encontrado o inválido")));
-
 
 
     }

@@ -22,6 +22,7 @@ public class SecureIdGenerator {
 
         return String.format("%s_%s_%s", encrypted, hash, timestamp);
     }
+
     public static String generateSecureId(EncryptionService encryptionService,
                                           ValidationService validationService,
                                           TimestampService timestampService) {

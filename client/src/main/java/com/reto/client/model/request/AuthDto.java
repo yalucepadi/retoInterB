@@ -14,6 +14,9 @@ public class AuthDto {
     private String user;
     private ClientRequest cliente;
 
+    public AuthDto(int i, String s) {
+    }
+
     public Integer getId() {
         return id;
     }

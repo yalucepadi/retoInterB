@@ -62,7 +62,6 @@ public class ClientDto {
     }
 
 
-
     public String getCodigoUnico() {
         return codigoUnico;
     }

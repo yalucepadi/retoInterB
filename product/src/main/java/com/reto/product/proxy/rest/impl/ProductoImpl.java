@@ -5,10 +5,9 @@ import com.reto.product.proxy.rest.ProductoService;
 import com.reto.product.repository.ProductoRepository;
 import com.reto.product.utils.ProductoMapper;
 import com.reto.product.utils.ProductoValidador;
-import reactor.core.publisher.Mono;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
-import java.util.List;
+import reactor.core.publisher.Mono;
 
 @Service
 public class ProductoImpl implements ProductoService {
@@ -36,6 +35,7 @@ public class ProductoImpl implements ProductoService {
                 .map(productoRepository::save)
                 .map(productoMapper::toDto);
     }
+
     @Override
     public Mono<ProductoDto> obtenerProductoPorId(Integer id) {
         return Mono.fromCallable(() -> productoRepository.findById(id))
@@ -44,8 +44,6 @@ public class ProductoImpl implements ProductoService {
                         .orElseGet(() -> Mono.error(new RuntimeException("Producto no encontrado")))
                 );
     }
-
-
 
 
     @Override
@@ -70,8 +68,6 @@ public class ProductoImpl implements ProductoService {
                 .map(productoMapper::toDto)
                 .switchIfEmpty(Mono.error(new RuntimeException("Producto no encontrado o inválido")));
     }
-
-
 
 
 }

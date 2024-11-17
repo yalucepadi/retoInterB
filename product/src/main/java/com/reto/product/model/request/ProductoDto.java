@@ -1,9 +1,7 @@
 package com.reto.product.model.request;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class ProductoDto {

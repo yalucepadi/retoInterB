@@ -5,6 +5,7 @@ import com.reto.product.model.request.ProductoRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Predicate;
+
 @Component
 public class ProductoValidador {
     private final Predicate<ProductoRequest> tieneSaldoPositivo = producto ->

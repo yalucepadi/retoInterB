@@ -11,19 +11,18 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableWebFlux
 
 @ComponentScan(basePackages = {
-		"com.reto.product.expose",
-		"com.reto.product.proxy.rest",
-		"com.reto.product.utils"
+        "com.reto.product.expose",
+        "com.reto.product.proxy.rest",
+        "com.reto.product.utils"
 })
 @EntityScan(basePackages = "com.reto.product.model.request")
 @EnableJpaRepositories(basePackages = "com.reto.product.repository")
 
 
-
 public class ProductApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProductApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ProductApplication.class, args);
+    }
 
 }

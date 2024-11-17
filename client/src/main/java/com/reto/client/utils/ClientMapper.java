@@ -11,6 +11,7 @@ import org.mapstruct.MappingTarget;
 
 public interface ClientMapper {
     SecureIdGenerator generator = new SecureIdGenerator();
+
     @Mapping(target = "id", source = "id")
 
     @Mapping(target = "apellidos", source = "apellidos")
@@ -18,8 +19,6 @@ public interface ClientMapper {
     @Mapping(target = "tipoDocumento", source = "tipoDocumento")
     @Mapping(target = "numeroDocumento", source = "numeroDocumento")
     @Mapping(target = "productosFinancieros", source = "productosFinancieros")
-
-
     ClientRequest toClient(ClientDto clientDto);
 
     @Mapping(target = "id", source = "id")
@@ -29,8 +28,8 @@ public interface ClientMapper {
     @Mapping(target = "tipoDocumento", source = "tipoDocumento")
     @Mapping(target = "numeroDocumento", source = "numeroDocumento")
     @Mapping(target = "productosFinancieros", source = "productosFinancieros")
-
     ClientDto toDto(ClientRequest clientRequest);
+
     @AfterMapping
     default void generarCodigoUnico(@MappingTarget ClientRequest clientRequest) {
 
@@ -44,6 +43,7 @@ public interface ClientMapper {
         String codigoUnico = generator.generateSecureId();
         clientDto.setCodigoUnico(codigoUnico);
     }
+
     void updateClientFromDto(ClientDto dto, @MappingTarget ClientRequest request);
 
 
