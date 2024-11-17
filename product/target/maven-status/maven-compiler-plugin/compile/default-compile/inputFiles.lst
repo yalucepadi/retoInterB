@@ -1,0 +1,15 @@
+D:\interProject\product\src\main\java\com\reto\product\model\response\ResponseGenerico.java
+D:\interProject\product\src\main\java\com\reto\product\repository\ProductoRepository.java
+D:\interProject\product\src\main\java\com\reto\product\utils\Constants.java
+D:\interProject\product\src\main\java\com\reto\product\utils\ProductoMapper.java
+D:\interProject\product\src\main\java\com\reto\product\model\request\ProductoRequest.java
+D:\interProject\product\src\main\java\com\reto\product\model\response\ResponseGeneralDto.java
+D:\interProject\product\src\main\java\com\reto\product\utils\GenerateUnico.java
+D:\interProject\product\src\main\java\com\reto\product\ProductApplication.java
+D:\interProject\product\src\main\java\com\reto\product\utils\ProductoAdapter.java
+D:\interProject\product\src\main\java\com\reto\product\model\response\ProductoResponse.java
+D:\interProject\product\src\main\java\com\reto\product\model\request\ProductoDto.java
+D:\interProject\product\src\main\java\com\reto\product\proxy\rest\impl\ProductoImpl.java
+D:\interProject\product\src\main\java\com\reto\product\utils\ProductoValidador.java
+D:\interProject\product\src\main\java\com\reto\product\proxy\rest\ProductoService.java
+D:\interProject\product\src\main\java\com\reto\product\expose\ProductoController.java
