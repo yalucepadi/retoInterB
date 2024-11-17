@@ -1,0 +1,275 @@
+openapi: 3.0.0
+info:
+  title: API de Productos
+  version: 1.0.0
+  description: API para manejar operaciones relacionadas con productos.
+paths:
+  /api/product/{id}:
+    get:
+      summary: Obtener un producto por ID
+      description: Recupera los detalles de un producto basado en su ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID del producto
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: OK
+                  status:
+                    type: integer
+                    example: 200
+                  comment:
+                    type: string
+                    example: Producto encontrado
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 9
+                      tipoProducto:
+                        type: string
+                        example: Cuenta de ahorro
+                      nombre:
+                        type: string
+                        example: Cuenta Súper Tasa
+                      saldo:
+                        type: integer
+                        example: 0
+        '404':
+          description: Producto no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: NOT_FOUND
+                  status:
+                    type: integer
+                    example: 404
+                  comment:
+                    type: string
+                    example: Producto no encontrado
+  /api/product:
+    get:
+      summary: Obtener lista de productos
+      description: Recupera la lista completa de productos, con opciones de paginación.
+      responses:
+        '200':
+          description: Lista de productos obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: OK
+                  status:
+                    type: integer
+                    example: 200
+                  comment:
+                    type: string
+                    example: Lista de productos obtenida
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        tipoProducto:
+                          type: string
+                          nullable: true
+                          example: null
+                        nombre:
+                          type: string
+                          nullable: true
+                          example: null
+                        saldo:
+                          type: integer
+                          example: 0
+        '500':
+          description: Error en el servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: ERROR
+                  status:
+                    type: integer
+                    example: 500
+                  comment:
+                    type: string
+                    example: Error al obtener la lista de productos
+  /api/product/create:
+    post:
+      summary: Crear un nuevo producto
+      description: Crea un nuevo producto con los detalles proporcionados en el cuerpo de la solicitud.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tipoProducto:
+                  type: string
+                  example: "Cuenta de ahorro"
+                nombre:
+                  type: string
+                  example: "Cuenta Súper Tasa"
+                saldo:
+                  type: number
+                  format: float
+                  example: 0.0
+      responses:
+        '201':
+          description: Producto creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: Created
+                  status:
+                    type: integer
+                    example: 201
+                  comment:
+                    type: string
+                    example: Producto creado exitosamente
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: "Producto: Cuenta Súper Tasa"
+        '400':
+          description: Error de validación en los datos proporcionados
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: BAD_REQUEST
+                  status:
+                    type: integer
+                    example: 400
+                  comment:
+                    type: string
+                    example: Los datos proporcionados no son válidos
+  /api/product/update/{id}:
+    put:
+      summary: Actualizar un producto existente
+      description: Actualiza los detalles de un producto basado en su ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID del producto que se desea actualizar
+          required: true
+          schema:
+            type: integer
+            example: 12
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tipoProducto:
+                  type: string
+                  example: "Cuenta Súper Tasa"
+                nombre:
+                  type: string
+                  example: "Cuenta Simple"
+                saldo:
+                  type: number
+                  format: float
+                  example: 10
+      responses:
+        '200':
+          description: Producto actualizado correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: OK
+                  status:
+                    type: integer
+                    example: 200
+                  comment:
+                    type: string
+                    example: Producto actualizado correctamente
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      tipoProducto:
+                        type: string
+                        example: "Cuenta de ahorro"
+                      nombre:
+                        type: string
+                        example: "Cuenta Simple"
+                      saldo:
+                        type: integer
+                        example: 0
+        '400':
+          description: Error en los datos proporcionados para la actualización
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: BAD_REQUEST
+                  status:
+                    type: integer
+                    example: 400
+                  comment:
+                    type: string
+                    example: Los datos proporcionados no son válidos para la actualización
+        '404':
+          description: Producto no encontrado para actualizar
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: NOT_FOUND
+                  status:
+                    type: integer
+                    example: 404
+                  comment:
+                    type: string
+                    example: Producto no encontrado con el ID proporcionado                   
